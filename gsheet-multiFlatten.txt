@@ -1,0 +1,37 @@
+// multiFlatten - ControlAltPete 2023
+// Takes a list or range that may contain comma separates values
+// and flattens it, returning a list of individual values
+function multiFlatten(input, separator = ',') {
+  // Initialize an empty array to store the flattened elements
+  var flatList = [];
+  
+  // Check if the input is a Google Sheets range
+  if (typeof input === 'object' && input.getSheet) {
+    // Convert the range to a 2D array of values
+    var values = input.getValues();
+    
+    // Flatten the 2D array to a 1D array
+    var inputList = [].concat.apply([], values);
+  } else {
+    // Assume the input is already a list (array)
+    var inputList = input;
+  }
+  
+  // Loop through each element in the input list
+  for (var i = 0; i < inputList.length; i++) {
+    // Check if the element contains a comma
+    if (inputList[i].toString().includes(separator)) {
+      // Split the element by comma and trim any leading/trailing spaces
+      var subItems = inputList[i].toString().split(',').map(item => item.trim());
+      
+      // Add each sub-item to the flat list
+      flatList = flatList.concat(subItems);
+    } else {
+      // If no comma, add the element as-is to the flat list
+      flatList.push(inputList[i].toString());
+    }
+  }
+  
+  // Return the flattened list
+  return flatList;
+}
