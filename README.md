@@ -18,6 +18,6 @@ Blackberry
 Cherry
 Durian
 
-Can be used on a list, eg: =multiFlatten(unique(A1:A99))
-Can be used on a region eg: =multiFlatten(A1:A99)
-Can be used in a funtion eg: =unique(multiFlatten(A1:A99))
+Can be used on a list, eg: =multiFlatten(unique(A1:A99))  
+Can be used on a region eg: =multiFlatten(A1:A99)  
+Can be used in a funtion eg: =unique(multiFlatten(A1:A99))  
